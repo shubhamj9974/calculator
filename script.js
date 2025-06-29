@@ -45,32 +45,32 @@ function clearCalculator() {
     updateCalculatorDisplay();
 }
 
+
 function calculateResult() {
-    if {
-        // Evaluate the calculation safely
-        const result = evaluateCalculation(currentCalculation);
+    // Evaluate the calculation safely
+    const result = evaluateCalculation(currentCalculation);
+
+    if (result === null || result === undefined || result === 'Error' || isNaN(result)) {
+        // Handle calculation errors
+        calculatorInput.style.backgroundColor = '#f8d7da';
+        currentCalculation = 'Error';
+        updateCalculatorDisplay();
+
+        setTimeout(() => {
+            clearCalculator();
+            calculatorInput.style.backgroundColor = '#f8f9fa';
+        }, 1000);
+    } else {
         currentCalculation = result.toString();
         updateCalculatorDisplay();
-        
+
         // Show success animation
         calculatorInput.style.backgroundColor = '#d4edda';
         setTimeout(() => {
             calculatorInput.style.backgroundColor = '#f8f9fa';
         }, 500);
-        
-    } else (error) {
-        // Handle calculation errors
-        calculatorInput.style.backgroundColor = '#f8d7da';
-        currentCalculation = 'Error';
-        updateCalculatorDisplay();
-        
-        setTimeout(() => {
-            clearCalculator();
-            calculatorInput.style.backgroundColor = '#f8f9fa';
-        }, 1000);
     }
 }
-
 function evaluateCalculation(expression) {
     // Custom evaluation function for safety
     const operators = ['+', '-', '*', '/'];
