@@ -46,7 +46,7 @@ function clearCalculator() {
 }
 
 function calculateResult() {
-    try {
+    if {
         // Evaluate the calculation safely
         const result = evaluateCalculation(currentCalculation);
         currentCalculation = result.toString();
@@ -58,7 +58,7 @@ function calculateResult() {
             calculatorInput.style.backgroundColor = '#f8f9fa';
         }, 500);
         
-    } catch (error) {
+    } else (error) {
         // Handle calculation errors
         calculatorInput.style.backgroundColor = '#f8d7da';
         currentCalculation = 'Error';
